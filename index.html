@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta name="viewport" contents="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <title>Polyfolio</title>
+        <link rel="stylesheet" href="./main.css">
+        <!--<script type="text/javascript" src="main.js">-->
+        </script>
+    </head>
+    <body>
+        <header>
+            <div class="movingImage wrapper">
+                <div id="meetingPicture" class="day">
+                    <svg id="sun" class="day" width="39" height="39" viewBox="0 0 39 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="19.5" cy="19.5" r="19.5"/>
+                    </svg>
+                    <svg id="line1" class="day" width="873" height="256" viewBox="0 0 873 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect y="3" width="873" height="253"/>
+                            <line x1="431.689" y1="4.33224" x2="0.689324" y2="227.332" stroke="red" stroke-width="3"/>
+                            <line x1="424.682" y1="1.66391" x2="861.682" y2="224.664" stroke="black" stroke-width="3"/>
+                            <line y1="1.5" x2="861" y2="1.5" stroke="black" stroke-width="3"/>
+                    </svg>
+                    <svg id="firstTree" class="day" style="width:0px" viewBox="0 0 230 258"  xmlns="http://www.w3.org/2000/svg">
+                        <path d="M66 49C66.8 49 99 16.3333 115 0L166 49H144.5L190.5 99H160C160.8 99 195.333 134 212.5 151.5H178.5L230 207.5H127V257.5H104V207.5H0L55.5 151.5H21L72 99H38L87 49H66Z" />
+                    </svg>
+                    <svg id="secondTree" class="day" style="width:0px" viewBox="0 0 230 258" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M66 49C66.8 49 99 16.3333 115 0L166 49H144.5L190.5 99H160C160.8 99 195.333 134 212.5 151.5H178.5L230 207.5H127V257.5H104V207.5H0L55.5 151.5H21L72 99H38L87 49H66Z" />
+                    </svg>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div>
+                <img id="paulina" src="images/paulinadev.png"></img>
+            </div>
+        </main>
+        <footer>
+            <div class="footer_ps"> 
+                <p class="footer_date wrapper">© Paulina 2023</p>
+                <img src="images/github.png"></img> 
+            </div>
+           
+        </footer>
+        <script>
+            
+            const w = meetingPicture.clientWidth / 2;
+            const h = meetingPicture.clientHeight / 2;
+            const radius = 160;
+            const sunWidth = sun.clientWidth/2;
+            const sunHeight = sun.clientHeight/2;
+            let corner = 0;
+
+            let sunByCircle = () => {
+                sun.style.left = (w + 2*radius * Math.cos(Math.PI * corner)- sunWidth) + 'px';
+                sun.style.top = (h + radius * Math.sin(Math.PI * corner)- sunHeight) + 'px';
+                corner += 0.003;
+                if (corner > 2) {
+                    corner = 0;
+                    toggleDay();
+                }
+            }
+            setInterval(sunByCircle, 10);
+            function toggleDay() {
+                meetingPicture.classList.toggle("day");
+                line1.classList.toggle("day");
+                sun.classList.toggle("day");
+                firstTree.classList.toggle("day");
+                secondTree.classList.toggle("day");
+            }
+
+            const pictureWidth = meetingPicture.clientWidth;
+            const pictureHeight = meetingPicture.clientHeight
+
+            tree1 = {
+                target: firstTree,
+                count: 0,
+                displacement: 0,
+                direction: 1,
+                stepsCount: 0 ,
+            }
+            tree2 = {
+                target: secondTree,
+                count: 0,
+                displacement: 0,
+                direction: -1,
+                stepsCount: 0,
+            }
+
+            function treesDisplacement(tree) {
+                tree.target.style.left = (pictureWidth / 2 - parseInt(tree.target.style.width)/2 + tree.displacement*2.5*tree.stepsCount/5*tree.direction) + 'px';
+                tree.target.style.top = (meetingPicture.clientHeight / 2 - 25 - parseInt(tree.target.clientHeight) + tree.displacement*tree.stepsCount/5) + 'px';
+                tree.displacement += 1;
+                tree.stepsCount+= 1;
+
+            }
+            function treesIncrease(tree) {
+                tree.target.style.width = parseInt(tree.target.style.width) + tree.count + "px";
+                if(tree.count < 20) {tree.count += 1}
+            }
+            function doAnimation(tree) {
+                if (tree.displacement > 45) {
+                    tree.count = 0;
+                    tree.displacement = 0
+                    tree.stepsCount = 0
+                    tree.target.style.width = "0px"
+                }
+                treesDisplacement(tree);
+                treesIncrease(tree);
+            }
+            setInterval(doAnimation, 100, tree1);
+            setTimeout(setInterval, 2000, doAnimation, 100, tree2)
+            </script>
+    </body>
+</html>
