@@ -65,6 +65,8 @@ body {
     font-size: 12px;
     line-height: 14px;
     color: #000000;
+    margin-bottom: 0px;
+    margin-top: 87px;
 }
 footer {
     display: flex;
@@ -72,6 +74,7 @@ footer {
     width: 100%;
     margin-top: auto;
     justify-content: space-between;
+    position: relative;
 }
 main {
     display: flex; 
@@ -122,5 +125,16 @@ main {
 }
 .roadLine.day {
     stroke:black;
+}
+.footer_link {
+    color: black;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    margin-bottom: 0px;
+    margin-top: 60px;
+}
+.footer_link_cat {
+    margin-right: 5px;
 }
 
