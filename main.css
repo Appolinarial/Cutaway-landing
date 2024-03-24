@@ -131,17 +131,13 @@ main {
     left: 0px;
 }
 
-#ball.day {
-    fill:black;
-}
-
 #firstTree {
     fill: white;
     position: absolute; 
     width: 0px;
 }
 
-#firstTree.day {
+.day #firstTree, .day #secondTree, .day #ball{
     fill: #000000; 
 }
 
@@ -151,10 +147,6 @@ main {
     width: 0px;
 }
 
-#secondTree.day {
-    fill: #000000; 
-}
-
 #line1 {
     top: 231px;
     position: absolute;
@@ -162,7 +154,7 @@ main {
     fill: black;
 }
 
-#line1.day {
+.day #line1 {
     fill:#D9D9D9;
 }
 
@@ -175,7 +167,7 @@ main {
     stroke:#D9D9D9;
 }
 
-.roadLine.day {
+.day .roadLine {
     stroke:black;
 }
 
