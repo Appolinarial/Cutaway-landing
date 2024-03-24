@@ -67,29 +67,27 @@
         const ballHeight = ball.clientHeight / 2;
         const pictureWidth = meetingPicture.clientWidth;
         const pictureHeight = meetingPicture.clientHeight;
-        let corner = 1;
-        let tree1 = {
+        const tree1 = {
             target: firstTree,
             count: 0,
             displacement: 0,
             direction: 1.4,
             stepsCount: 0,
         }
-
-        let tree2 = {
+        const tree2 = {
             target: secondTree,
             count: 0,
             displacement: 0,
             direction: -1.4,
             stepsCount: 0,
         }
-
+        let angle = 1;
         let ballByCircle = () => {
-            ball.style.left = (w + 2 * radius * Math.cos(Math.PI * corner) - ballWidth) + "px";
-            ball.style.top = (h + radius * Math.sin(Math.PI * corner) - ballHeight) + "px";
-            corner += 0.003;
-            if (corner > 2) {
-                corner = 1;
+            ball.style.left = (w + 2 * radius * Math.cos(Math.PI * angle) - ballWidth) + "px";
+            ball.style.top = (h + radius * Math.sin(Math.PI * angle) - ballHeight) + "px";
+            angle += 0.003;
+            if (angle > 2) {
+                angle = 1;
                 meetingPicture.classList.toggle("day");
             }
         }
