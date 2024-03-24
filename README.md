@@ -1,2 +1,1 @@
-# Cutaway-landing
-https://appolinarial.github.io/Cutaway-landing/
+JS animation. Interaction with the DOM.
